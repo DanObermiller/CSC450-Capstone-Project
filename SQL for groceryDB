@@ -1,0 +1,138 @@
+-- ============================
+-- USERS TABLE
+-- ============================
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255),
+    phone VARCHAR(20),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ============================
+-- CATEGORIES TABLE
+-- ============================
+CREATE TABLE categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(100) NOT NULL
+);
+
+-- ============================
+-- PRODUCTS TABLE
+-- ============================
+CREATE TABLE products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT,
+    product_name VARCHAR(150) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    stock INT DEFAULT 0,
+    image_url VARCHAR(255),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id)
+);
+
+-- ============================
+-- CART ITEMS TABLE
+-- ============================
+CREATE TABLE cart_items (
+    cart_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    product_id INT,
+    quantity INT DEFAULT 1,
+    added_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+-- ============================
+-- ORDERS TABLE
+-- ============================
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    total_amount DECIMAL(10,2),
+    status ENUM('Pending','Processing','Shipped','Delivered','Cancelled') DEFAULT 'Pending',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- ============================
+-- ORDER ITEMS TABLE
+-- ============================
+CREATE TABLE order_items (
+    order_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    product_id INT,
+    quantity INT,
+    price DECIMAL(10,2),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+-- ============================
+-- ADDRESSES TABLE
+-- ============================
+CREATE TABLE addresses (
+    address_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    street VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    zipcode VARCHAR(20),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- ============================
+-- PAYMENTS TABLE
+-- ============================
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    amount DECIMAL(10,2),
+    payment_method ENUM('Card','PayPal','CashOnDelivery'),
+    payment_status ENUM('Pending','Paid','Failed') DEFAULT 'Pending',
+    paid_at DATETIME,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
+
+-- ============================
+-- SAMPLE CATEGORIES
+-- ============================
+INSERT INTO categories (category_name) VALUES
+('Fruits'),
+('Vegetables'),
+('Dairy'),
+('Bakery'),
+('Meat'),
+('Beverages'),
+('Snacks');
+
+-- ============================
+-- SAMPLE PRODUCTS
+-- ============================
+INSERT INTO products (category_id, product_name, description, price, stock, image_url) VALUES
+(1, 'Red Apples', 'Fresh and crispy red apples.', 3.99, 120, 'images/apples.jpg'),
+(1, 'Bananas', 'Organic ripe bananas.', 1.29, 200, 'images/bananas.jpg'),
+(1, 'Strawberries', 'Sweet strawberries in a 1 lb pack.', 4.49, 80, 'images/strawberries.jpg'),
+
+(2, 'Carrots', 'Fresh orange carrots.', 2.49, 150, 'images/carrots.jpg'),
+(2, 'Broccoli', 'Green broccoli crowns.', 2.99, 90, 'images/broccoli.jpg'),
+(2, 'Spinach', 'Fresh spinach leaves.', 3.29, 110, 'images/spinach.jpg'),
+
+(3, 'Whole Milk', '1 gallon whole milk.', 3.59, 60, 'images/milk.jpg'),
+(3, 'Cheddar Cheese', 'Sharp cheddar cheese block.', 5.49, 40, 'images/cheddar.jpg'),
+(3, 'Yogurt', 'Plain Greek yogurt.', 4.99, 70, 'images/yogurt.jpg'),
+
+(4, 'White Bread', 'Soft white sandwich bread.', 2.49, 100, 'images/bread.jpg'),
+(4, 'Croissants', 'Freshly baked croissants.', 5.99, 50, 'images/croissants.jpg'),
+
+(5, 'Chicken Breast', 'Boneless skinless chicken breast.', 8.99, 45, 'images/chicken.jpg'),
+(5, 'Ground Beef', 'Lean ground beef 1 lb.', 6.49, 55, 'images/beef.jpg'),
+
+(6, 'Orange Juice', '100% pure orange juice.', 3.99, 75, 'images/oj.jpg'),
+(6, 'Bottled Water', '24-pack purified water.', 4.49, 90, 'images/water.jpg'),
+
+(7, 'Potato Chips', 'Classic salted potato chips.', 2.99, 130, 'images/chips.jpg'),
+(7, 'Chocolate Cookies', 'Crunchy chocolate chip cookies.', 3.49, 95, 'images/cookies.jpg');
