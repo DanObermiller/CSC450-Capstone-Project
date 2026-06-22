@@ -1,0 +1,120 @@
+<!--Home page for UltraMart-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>	
+   <meta charset="utf-8" />    
+   <title>Home</title>
+   <link rel="stylesheet" type="text/css" href="home.css">
+</head>
+  <header>
+<br>
+<!--Temp logo-->
+<div id="logo">
+<p>UltraMart</p>
+</div>
+
+<!--Access to other pages-->
+<a href="home.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="profile.html">Log In</a>
+</header>
+<body>
+	<!--Search bar changes what products appear-->
+	<div id="nav">
+		<input type="text" placeholder="Search... e.g. Cream Cheese">
+	</div>
+	<!--List of products-->
+	<div id="inventory">
+		<h3 class="section-label">Most Popular</h3>
+		<section>
+		
+		<!--Each product is within its own product class-->
+		<div class="product">
+			<div class="image-input">
+				<img src="eggs.png">
+			</div>
+			<h3>Eggs</h3>
+			<p class="price">$2.99</p>
+			<div class="quantity">
+                <label for="product1">
+                    Quantity:
+                </label>
+                <input type="number"
+                       id="product1"
+                       value="1">
+            </div>
+			<div class="productoptions">
+                <button>
+                    Add to Cart
+                </button>
+            </div>
+		</div>
+		<div class="product">
+			<div class="image-input">
+				<img src="creamcheese.jpg">
+			</div>
+			<h3>Cream Cheese</h3>
+			<p class="price">$4.99</p>
+			<div class="quantity">
+                <label for="product1">
+                    Quantity:
+                </label>
+                <input type="number"
+                       id="product1"
+                       value="1">
+            </div>
+			<div class="productoptions">
+                <button>
+                    Add to Cart
+                </button>
+            </div>
+		</div>
+		<div class="product">
+			<div class="image-input">
+				<img src="starbursts.png">
+			</div>
+			<h3>Starbursts</h3>
+			<p class="price">$0.99</p>
+			<div class="quantity">
+                <label for="product1">
+                    Quantity:
+                </label>
+                <input type="number"
+                       id="product1"
+                       value="1">
+            </div>
+			<div class="productoptions">
+                <button>
+                    Add to Cart
+                </button>
+            </div>
+		</div>
+		<div class="product">
+			<div class="image-input">
+				<img src="tacklebox.png">
+			</div>
+			<h3>Tacklebox</h3>
+			<p class="price">$15.99</p>
+			<div class="quantity">
+                <label for="product1">
+                    Quantity:
+                </label>
+                <input type="number"
+                       id="product1"
+                       value="1">
+            </div>
+			<div class="productoptions">
+                <button>
+                    Add to Cart
+                </button>
+            </div>
+		</div>
+		</section>
+	</div>
+</body>
+<!--Footer for UltraMart-->
+<footer>
+<p>UltraMart aims to provide a wide range of products for our customers to enjoy!<p>
+</footer>
+</html>
