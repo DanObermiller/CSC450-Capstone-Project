@@ -1,0 +1,85 @@
+<!--Home page for UltraMart-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>	
+   <meta charset="utf-8" />    
+   <title>My Cart</title>
+   <link rel="stylesheet" type="text/css" href="home.css">
+</head>
+  <header>
+  <div id="top">
+<br>
+<!--Temp logo-->
+<div id="logo">
+<p>UltraMart</p>
+</div>
+
+<!--Access to other pages-->
+<a href="home.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="profile.html">Log In</a>
+<a href="cart.html">My Cart</a>
+<a href="checkout.html">Check Out</a>
+</div>
+</header>
+<body>
+	<div id="content">
+		<div id="cartcontent">
+		<h1>My Cart</h1>
+			<div class="cartitem">
+				<h3>Eggs</h3>
+				<label for="product1">
+					Quantity:
+				</label>
+				<input type="number"
+					   id="product1"
+					   value="1">
+				<button>
+					Remove
+				</button>
+				<p>$2.99</p>
+				
+			</div>
+			<div class="cartitem">
+				<h3>Cream Cheese</h3>
+				<label for="product2">
+					Quantity:
+				</label>
+				<input type="number"
+					   id="product2"
+					   value="1">
+				<button>
+					Remove
+				</button>
+				<p>$4.99</p>
+				
+			</div>
+			<div class="cartitem">
+				<h3>Starbursts</h3>
+				<label for="product3">
+					Quantity:
+				</label>
+				<input type="number"
+					   id="product3"
+					   value="1">
+				<button>
+					Remove
+				</button>
+				<p>$0.99</p>
+				
+			</div>
+		</div>
+		
+		<div class="checkout">
+			<form method="POST" action="checkout.html"><button type="submit" action="checkout.html">Proceed to Checkout</button>
+			</form>
+		</div>
+	
+	</div>
+</body>
+<!--Footer for UltraMart-->
+<footer>
+<p>UltraMart aims to provide a wide range of products for our customers to enjoy!<p>
+</footer>
+</html>

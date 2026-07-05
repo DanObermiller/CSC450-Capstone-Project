@@ -1,7 +1,7 @@
 /* home.css - 
    
 */
-body {
+#content {
 background:            #EEE;
 font-size:             16px;
 font-family:           optima, helvetica, arial, sans-serif;
@@ -9,6 +9,7 @@ max-width:             1200px;
 margin:                auto;
 border:                1px solid #000080;
 padding:               10px;
+flex: 1;
 }
 
 h1 {
@@ -23,7 +24,8 @@ border-top:            white 1px solid;
 border-bottom:         white 1px solid;
 }
 
-header {
+#top {
+font-family:           optima, helvetica, arial, sans-serif;
 background-color: #000080;
 height: 100%;
 width: 100%;
@@ -81,7 +83,7 @@ a {
 	color: white;
 	font-size: 60px;
 	font-weight: bold;
-	margin: -50px;
+	margin-bottom: -50px;
 }
 
 #nav {
@@ -181,6 +183,7 @@ footer {
 	padding-bottom: 40px;
 	justify-content: center;
 	align-items: center;
+	font-family:           optima, helvetica, arial, sans-serif;
 }
 
 footer p {
@@ -195,17 +198,14 @@ footer p {
 	font-size: 40px;
 }
 
-.profileoptions {
-	margin-top: 1rem;
-    color: black;
-    border: none;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-bottom: 1rem;
+td {
+	padding: 20px;
+}
+
+td img {
+	margin-right: 50px;
+	max-height: 160px;
+	border-radius: 25px;
 }
 
 .profileoptions button {
@@ -213,5 +213,56 @@ footer p {
 }
 
 .desc {
-	font-size: 30px;
+	font-size: 24px;
+}
+
+.profcontainer {
+	border: 0.1rem solid #4caf50;
+	padding: 10px;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+}
+
+.profbut {
+	background-color: #1c87c9; 
+	border: none; 
+	color: white; 
+	padding: 20px 34px; 
+	text-align: center; 
+	text-decoration: none; 
+	display: inline-block; 
+	font-size: 20px; 
+	margin: 4px 2px; 
+	cursor: pointer;
+}
+
+.cartitem {
+	background-color: #D3D3D3;
+	margin: 10px;
+	padding: 20px;
+}
+
+.cartitem h3 {
+	font-size: 26px;
+	display: inline;
+    vertical-align: center;
+    font-family: 'Open Sans', sans-serif;
+	padding-right: 30px;
+}
+.cartitem p {
+    vertical-align: top;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+#cartcontent {
+	max-width: 800px;
+}
+
+.checkout {
+	display: inline;
 }
