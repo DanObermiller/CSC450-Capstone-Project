@@ -1,0 +1,81 @@
+<!--Home page for UltraMart-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>	
+   <meta charset="utf-8" />    
+   <title>Question Center</title>
+   <link rel="stylesheet" type="text/css" href="home.css">
+</head>
+  <header>
+  <div id="top">
+<br>
+<!--Temp logo-->
+<div id="logo">
+<p>UltraMart</p>
+</div>
+
+<!--Access to other pages-->
+<a href="home.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="profile.html">Log In</a>
+<a href="cart.html">My Cart</a>
+<a href="checkout.html">Check Out</a>
+</div>
+</header>
+<body>
+	<div id="content">
+		<div class="profcontainer">
+			<h1>Ask Us Anything</h1><br><br>
+			<div id="chat-container">
+			<div id="chat-header">Live Chat Room</div>
+			<div id="message-box">
+				<!-- Messages will appear here -->
+				<div class="message received">Welcome to the UltraMart support center! Ask a question and a professional will be with you shortly.</div>
+			</div>
+			<form id="chat-form">
+				<input type="text" id="message-input" placeholder="Type a message..." />
+				<button type="submit" id="send-btn">Send</button>
+			</form>
+		</div>
+
+		<script>
+			const chatForm = document.getElementById('chat-form');
+			const messageInput = document.getElementById('message-input');
+			const messageBox = document.getElementById('message-box');
+
+			chatForm.addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				const messageText = messageInput.value.trim();
+				if (messageText === '') return;
+
+				appendMessage(messageText, 'sent');
+				messageInput.value = '';
+
+				// Simulate an automated response after 1 second
+				//setTimeout(() => {
+				//	appendMessage("Message Sent.", 'received');
+				//}, 1000);
+			});
+
+			function appendMessage(text, type) {
+				const messageDiv = document.createElement('div');
+				messageDiv.classList.add('message', type);
+				messageDiv.textContent = text;
+				
+				messageBox.appendChild(messageDiv);
+				
+				// Auto scroll to the bottom of the chat box
+				messageBox.scrollTop = messageBox.scrollHeight;
+			}
+		</script>
+		</div>
+	
+	</div>
+</body>
+<!--Footer for UltraMart-->
+<footer>
+<p>UltraMart aims to provide a wide range of products for our customers to enjoy!<p>
+</footer>
+</html>
