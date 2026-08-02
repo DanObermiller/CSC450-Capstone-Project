@@ -1,0 +1,99 @@
+/* ============================================================
+   ULTRA-MART DATABASE SETUP
+   Final GitHub-Ready SQL File
+   Matches Live phpMyAdmin Schema
+   ============================================================ */
+
+
+/* ============================================================
+   SAMPLE DATA: CATEGORIES
+   ============================================================ */
+INSERT INTO categories (category_name) VALUES
+('Produce'),
+('Dairy'),
+('Bakery'),
+('Snacks'),
+('Beverages'),
+('Household');
+
+
+/* ============================================================
+   SAMPLE DATA: PRODUCTS
+   ============================================================ */
+INSERT INTO products (category_id, product_name, description, price, image_url, is_active) VALUES
+(1, 'Bananas', 'Fresh yellow bananas', 0.59, 'images/bananas.jpg', 1),
+(1, 'Romaine Lettuce', 'Crisp romaine hearts', 2.49, 'images/romaine.jpg', 1),
+(2, 'Whole Milk', '1 gallon whole milk', 3.29, 'images/milk.jpg', 1),
+(3, 'Sourdough Bread', 'Fresh bakery sourdough loaf', 5.49, 'images/sourdough.jpg', 1),
+(4, 'Starbursts', 'Fruit-flavored chewy candy', 2.99, 'images/starbursts.png', 1),
+(5, 'Orange Juice', '100% pure orange juice', 4.49, 'images/oj.jpg', 1),
+(6, 'Laundry Detergent', 'Fresh scent detergent', 12.99, 'images/detergent.jpg', 1);
+
+
+/* ============================================================
+   FOREIGN KEY FIXES FOR PROFILE TABLES
+   ============================================================ */
+
+/* Ensure user_id matches users.user_id (INT NOT NULL) */
+ALTER TABLE user_public_profiles
+MODIFY user_id INT NOT NULL;
+
+ALTER TABLE user_private_profiles
+MODIFY user_id INT NOT NULL;
+
+/* Add required indexes */
+ALTER TABLE user_public_profiles
+ADD INDEX idx_public_user_id (user_id);
+
+ALTER TABLE user_private_profiles
+ADD INDEX idx_private_user_id (user_id);
+
+/* Add foreign key constraints */
+ALTER TABLE user_public_profiles
+ADD CONSTRAINT fk_public_user
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE user_private_profiles
+ADD CONSTRAINT fk_private_user
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+/* ============================================================
+   SAMPLE DATA: CARTS
+   ============================================================ */
+INSERT INTO carts (user_id) VALUES
+(1),
+(2);
+
+
+/* ============================================================
+   SAMPLE DATA: CART ITEMS
+   ============================================================ */
+INSERT INTO cart_items (cart_id, product_id, quantity) VALUES
+(1, 1, 3),   /* Bananas */
+(1, 4, 1),   /* Starbursts */
+(2, 2, 2);   /* Romaine Lettuce */
+
+
+/* ============================================================
+   SAMPLE DATA: ORDERS
+   ============================================================ */
+INSERT INTO orders (user_id, total_amount) VALUES
+(1, 12.06),
+(2, 6.58);
+
+
+/* ============================================================
+   SAMPLE DATA: ORDER ITEMS
+   ============================================================ */
+INSERT INTO order_items (order_id, product_id, quantity, price) VALUES
+(1, 1, 3, 0.59),
+(1, 4, 1, 2.99),
+(2, 2, 2, 2.49);
+
+
+/* ============================================================
+   END OF ULTRA-MART FINAL SQL FILE
+   ============================================================ */
